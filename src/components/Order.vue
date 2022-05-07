@@ -1,5 +1,6 @@
 <template>
     <div id = "order">
+        <h1 style="color: white;"> Order </h1> <hr style="height:10px;border-width:0;color:gray;background-color:white; width: 30%">
         <table class="table" width="50%">
             <tr>
                 <th>Customer: </th>
