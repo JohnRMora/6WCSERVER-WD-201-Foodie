@@ -36,6 +36,7 @@
             </div>
             <br />
             <button type="submit" class="btn btn-warning" @click.prevent="placeOrder">Place order</button>
+            <router-link class="btn btn-warning" to="/menu">Order More</router-link>
         </form>
     </div>
 </template>

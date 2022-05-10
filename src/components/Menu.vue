@@ -10,6 +10,7 @@
                 <a class="btn btn-warning fs-5" @click.prevent="addToCart(menu)">Add to Cart</a>          
             </div>
         </div>
+        <br /><br /><router-link class="btn btn-warning fs-2" to="/cart">Go to Cart</router-link>
     </div>
 </template>
 
