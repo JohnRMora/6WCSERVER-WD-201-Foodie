@@ -56,8 +56,17 @@ router.route('/products').get((req, res, next) => {
      }
    })
  })
+ router.route('/edit-products/:id').get((req, res, next) => {
+  ProductModel.findById(req.params.id, (error, data) => {
+   if (error) {
+     return next(error)
+   } else {
+     res.json(data)
+   }
+ })
+})
 // Update
-router.route('/products/:id').put((req, res, next) => {
+router.route('/update-products/:id').put((req, res, next) => {
   ProductModel.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {
@@ -70,7 +79,7 @@ router.route('/products/:id').put((req, res, next) => {
   })
 })
 // Delete
-router.route('/products/:id').delete((req, res, next) => {
+router.route('/delete-products/:id').delete((req, res, next) => {
   ProductModel.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);

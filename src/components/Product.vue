@@ -9,11 +9,11 @@
                 </div>
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="number" class="form-control" v-model="product.price" required>
+                    <input type="double" class="form-control" v-model="product.price" required>
                 </div>
                 <div class="form-group">
                     <label>Image</label>
-                    <input type="text" class="form-control" v-model="product.image" required>
+                    <input type="text" class="form-control" v-model="product.image">
                 </div>
                 <div class="form-group">
                     <br /><button class="btn btn-warning" type="submit">Add</button>
@@ -26,6 +26,7 @@
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,11 @@
                     </th>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
+                    <td>
+                        <router-link :to="{name: 'edit', params: { id: product._id }}" class="btn btn-success">Edit
+                        </router-link>
+                        <button @click.prevent="deleteProduct(product._id)" class="btn btn-warning">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -74,6 +80,17 @@
                 }).catch(error => {
                     console.log(error)
                 });
+            },
+            deleteProduct(id){
+                let apiURL = `http://localhost:4000/api/delete-products/${id}`;
+                let indexOfArrayItem = this.products.findIndex(i => i._id === id);
+                if (window.confirm("Do you really want to delete?")) {
+                    axios.delete(apiURL).then(() => {
+                        this.products.splice(indexOfArrayItem, 1);
+                    }).catch(error => {
+                        console.log(error)
+                    });
+                }
             }
         }
     }

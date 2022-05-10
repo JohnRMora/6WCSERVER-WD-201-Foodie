@@ -5,6 +5,7 @@
     >
     <h1>Welcome to <br />Foodie!</h1>
     <br /><br /><router-link class="btn btn-warning fs-2" to="/menu">Order Now</router-link>
+    <br /><br /><router-link class="btn btn-warning fs-2" to="/products">Add New Products</router-link>
     </div>
         
     </div>
